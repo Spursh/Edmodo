@@ -62,7 +62,6 @@ def insert_valid_rows(fields):
     key = fields[value_id]
     value = fields[value_pos]
     dictionary[key].append(value)
-    return dictionary
 
 
 def requested_output(user_input):  # how to test this function
@@ -73,13 +72,16 @@ def requested_output(user_input):  # how to test this function
     ids[-1] = ids[-1].strip("\n")
     for i in ids:
         i = i.strip()
-        check_valid_user_entry(i, dictionary) # dictionary add for unit test
+        #is_user_entry_valid(i, dictionary) # dictionary add for unit test
+        is_user_entry_valid(i)
         j = list(dictionary[i])
         for k in j:
             print(i + " " + k)
 
 
-def check_valid_user_entry(i, dictionary):  # dictionary add kiye for unit test
+#def is_user_entry_valid(i, dictionary):  # dictionary add kiye for unit test
+
+def is_user_entry_valid(i):
     """Checks whether User's entered data is valid or not
     :param i: User entered value
     :param dictionary: 
@@ -132,7 +134,8 @@ def get_user_input_to_continue():
 
 
 if __name__ == "__main__":
-    file_name = sys.argv[1]
+    #file_name = sys.argv[1]
+    file_name = (r"C:\Users\Shashank Golusula\Downloads\edmodo.txt")
     try:
         with open(file_name) as file:
             data = file.readlines()
