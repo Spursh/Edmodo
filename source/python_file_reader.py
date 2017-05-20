@@ -7,6 +7,7 @@ from dateutil.parser import parse
 
 dictionary = defaultdict(list)
 
+
 def split_line(current_line):
     """Splits the row into fields with respect to whitespace and double quotes.
     It will not split on whitespace if they are present inside double quotes.
@@ -57,8 +58,8 @@ def insert_valid_rows(fields):
     :param fields: List containing fields that is to be stored in dictionary
     :return:
     """
-    value_id=0
-    value_pos=3
+    value_id = 0
+    value_pos = 3
     key = fields[value_id]
     value = fields[value_pos]
     dictionary[key].append(value)
@@ -72,19 +73,15 @@ def requested_output(user_input):  # how to test this function
     ids[-1] = ids[-1].strip("\n")
     for i in ids:
         i = i.strip()
-        #is_user_entry_valid(i, dictionary) # dictionary add for unit test
         is_user_entry_valid(i)
         j = list(dictionary[i])
         for k in j:
             print(i + " " + k)
 
 
-#def is_user_entry_valid(i, dictionary):  # dictionary add kiye for unit test
-
 def is_user_entry_valid(i):
     """Checks whether User's entered data is valid or not
     :param i: User entered value
-    :param dictionary: 
     :return: User's entered value if successful else "Invalid Id"
     """
     if i.isdigit() and i in dictionary:
@@ -101,9 +98,10 @@ def information_retrieval_on_ids():
     requested_output(user_input)
 
 
-def get_entry(row_data): #what name should be given to this function
+def read_file(row_data):
     """Reads through the entire file.
-    Counts the total number of invalid rows in a file
+    Counts the total number of invalid rows in a file.
+    Passes the valid row to function 'insert_valid_rows'
     :param row_data: List of lines in a file
     """
     number_of_invalid_rows = 0
@@ -134,12 +132,11 @@ def get_user_input_to_continue():
 
 
 if __name__ == "__main__":
-    #file_name = sys.argv[1]
-    file_name = (r"C:\Users\Shashank Golusula\Downloads\edmodo.txt")
+    file_name = sys.argv[1]
     try:
         with open(file_name) as file:
             data = file.readlines()
-            get_entry(data)  #give a proper name
+            read_file(data)
             information_retrieval_on_ids()
             get_user_input_to_continue()
     except IOError:
