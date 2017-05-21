@@ -2,7 +2,6 @@ import datetime
 import sys
 import re
 from collections import defaultdict
-from Tools.scripts.treesync import raw_input
 from dateutil.parser import parse
 
 dictionary = defaultdict(list)
@@ -93,7 +92,7 @@ def is_user_entry_valid(i):
 
 def information_retrieval_on_ids():
     """Reads the user input from the console and passes the value to the function 'requested_output' """
-    user_input = raw_input("Enter ids")
+    user_input = input("Enter ids")
     print("Requested Ids", user_input)
     requested_output(user_input)
 
@@ -118,7 +117,7 @@ def read_file(row_data):
 def get_user_input_to_continue():
     """Provides an option to the user whether he wants to continue running the application or stop"""
     while True:
-        do_you_want_to_continue = raw_input(
+        do_you_want_to_continue = input(
             "Do you want to continue \n Yes or No ")
         do_you_want_to_continue = do_you_want_to_continue.strip("\n")
         if do_you_want_to_continue.lower() == "yes":
@@ -134,7 +133,7 @@ def get_user_input_to_continue():
 if __name__ == "__main__":
     file_name = sys.argv[1]
     try:
-        with open(file_name) as file:
+        with open(file_name, encoding='utf-8', errors='ignore') as file:
             data = file.readlines()
             read_file(data)
             information_retrieval_on_ids()
