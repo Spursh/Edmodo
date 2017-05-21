@@ -27,7 +27,7 @@ class TestSplitLine(unittest.TestCase):
         expected = ['10', '2016-06-10-17:53:22', '"Also invalid"', 'Str2']
         actual = split_line(r'10 2016-06-10-17:53:22 "Also invalid" Str2')
         self.assertEqual(expected, actual)
-
+ 
     def test_split3(self):
         expected = [
             '7',
