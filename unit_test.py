@@ -1,6 +1,6 @@
 import unittest
 
-from source.python_file_reader import is_not_valid_date, split_line, is_row_valid, insert_valid_rows, \
+from python_file_reader import is_not_valid_date, split_line, is_row_valid, insert_valid_rows, \
     is_user_entry_valid
 
 
@@ -136,8 +136,6 @@ class TestUserEntry(unittest.TestCase):
         expected = False
         actual = is_user_entry_valid(",,,,,")
         self.assertEqual(expected, actual)
-
-
 
 
 if __name__ == '__main__':
