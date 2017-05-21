@@ -4,7 +4,7 @@ import re
 from collections import defaultdict
 from dateutil.parser import parse
 
-dictionary = defaultdict(list)
+dictionary = defaultdict(list)  # Defines a dictionary where key's corresponding value is stored in list
 
 
 def split_line(current_line):
@@ -35,9 +35,10 @@ def is_not_valid_date(timestamp):
 
 
 def is_row_valid(fields_in_row):
-    """Checks for the validity of the current row
-    :param fields_in_row: List containing all the fields of a row in the file after it has been split by the function 'split_line()'
-    :return: "invalid" if successful else "valid"
+    """Checks for the validity of the current row 
+    :param fields_in_row: List containing all the fields of a row in 
+    the file after it has been split by the function 'split_line()' 
+    :return: False if row is invalid else True 
     """
     if fields_in_row is None or fields_in_row.__len__() is not 5 or int(
             fields_in_row[0]) <= 0 or is_not_valid_date(fields_in_row[1]):
@@ -80,7 +81,7 @@ def requested_output(user_input):
 def is_user_entry_valid(cur_id):
     """Checks whether User's entered data is valid or not
     :param cur_id: User entered value
-    :return: User's entered value if successful else "Invalid Id"
+    :return: True if user's entered value is valid else False
     """
     if cur_id.isdigit() and cur_id in dictionary:
         return True
