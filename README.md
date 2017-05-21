@@ -12,14 +12,14 @@ Steps to run the program:
 	
 	2. Change current working directory to the directory where the project is cloned.
 	
-	3. Change directory to "source" now run the following command "python python_file_reader.py [file_name]".
+	3. To start execution, run the following command "python python_file_reader.py [file_name]" 
 	
 	4. The total number of invalid rows are displayed to the user.
 	
 	5. The user is asked to enter the IDs seperated by ",".
 	
-	6. The user can now see the corresponding output as per the input.
+	6. The user can now see the output corresponding to the given input.
 	
-	7. The user is then asked whether he wants to continue running the program. To continue running the program enter a "yes" or to exit enter "no".
+	7. The user is then asked whether he wants to continue running the program. To continue running the program enter "yes", or to exit enter "no".
 	
 
