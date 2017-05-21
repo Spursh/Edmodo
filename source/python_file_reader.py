@@ -55,7 +55,6 @@ def is_row_valid(fields_in_row):
 def insert_valid_rows(fields):
     """Insert valid rows into dictionary for fast lookup
     :param fields: List containing fields that is to be stored in dictionary
-    :return:
     """
     value_id = 0
     value_pos = 3
@@ -64,33 +63,33 @@ def insert_valid_rows(fields):
     dictionary[key].append(value)
 
 
-def requested_output(user_input):  # how to test this function
+def requested_output(user_input):
     """Looks up into the dictionary for the user entered IDs separated with ','.
     :param user_input: Id entered by the user whose value is to be looked up in dictionary and displayed to user
     """
     ids = user_input.split(',')
     ids[-1] = ids[-1].strip("\n")
-    for i in ids:
-        i = i.strip()
-        is_user_entry_valid(i)
-        j = list(dictionary[i])
-        for k in j:
-            print(i + " " + k)
+    for current_id in ids:
+        current_id = current_id.strip()
+        is_user_entry_valid(current_id)
+        values = list(dictionary[current_id])
+        for value in values:
+            print(current_id + " " + value)
 
 
-def is_user_entry_valid(i):
+def is_user_entry_valid(cur_id):
     """Checks whether User's entered data is valid or not
-    :param i: User entered value
+    :param cur_id: User entered value
     :return: User's entered value if successful else "Invalid Id"
     """
-    if i.isdigit() and i in dictionary:
+    if cur_id.isdigit() and cur_id in dictionary:
         return True
     else:
-        print("Invalid")
+        print("Invalid id")
         return False
 
 
-def information_retrieval_on_ids():
+def retrieve_data_on_ids():
     """Reads the user input from the console and passes the value to the function 'requested_output' """
     user_input = input("Enter ids")
     print("Requested Ids", user_input)
@@ -121,7 +120,7 @@ def get_user_input_to_continue():
             "Do you want to continue \n Yes or No ")
         do_you_want_to_continue = do_you_want_to_continue.strip("\n")
         if do_you_want_to_continue.lower() == "yes":
-            information_retrieval_on_ids()
+            retrieve_data_on_ids()
             continue
         elif do_you_want_to_continue.lower() == "no":
             break
@@ -136,7 +135,7 @@ if __name__ == "__main__":
         with open(file_name, encoding='utf-8', errors='ignore') as file:
             data = file.readlines()
             read_file(data)
-            information_retrieval_on_ids()
+            retrieve_data_on_ids()
             get_user_input_to_continue()
     except IOError:
         print("Could not open file! Please enter valid file")
